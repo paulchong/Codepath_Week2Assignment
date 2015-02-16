@@ -29,11 +29,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="cti-X2-noR">
-                                <rect key="frame" x="0.0" y="0.0" width="360" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="360" height="1000"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" id="lM1-er-xHM">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1136"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" id="lM1-er-xHM">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="1568"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
                                     <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="intro_tile1" id="CP4-Pl-UoI">

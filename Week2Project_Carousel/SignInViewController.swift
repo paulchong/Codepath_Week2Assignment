@@ -52,7 +52,7 @@ class SignInViewController: UIViewController {
         dispatch_after(time, dispatch_get_main_queue(), {
             loadingView.dismissWithClickedButtonIndex(-1, animated: true)
             
-            if (self.emailTextField.text == "e" && self.passwordTextField.text == "pw") {
+            if (self.emailTextField.text == "email" && self.passwordTextField.text == "password") {
                 println("madeit")
                 self.performSegueWithIdentifier("loginSegue", sender: self)
             } else {
