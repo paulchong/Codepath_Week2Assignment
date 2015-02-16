@@ -14,11 +14,14 @@ class WelcomeScrollViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageControl: UIPageControl!
     
+    @IBOutlet weak var backupContainer: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         scrollView.delegate = self
         scrollView.contentSize = CGSize(width: 1280, height: 568)
+        backupContainer.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,7 +34,16 @@ class WelcomeScrollViewController: UIViewController, UIScrollViewDelegate {
         println(scrollView.contentOffset.x)
         var page = Int(scrollView.contentOffset.x / 320)
         pageControl.currentPage = page
+                
+        if (page == 3) {
+            backupContainer.hidden = false
+        }
+        
+        
     }
+    
+    
+    
     /*
     // MARK: - Navigation
 

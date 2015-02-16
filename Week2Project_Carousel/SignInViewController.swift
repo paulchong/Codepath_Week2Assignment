@@ -32,6 +32,8 @@ class SignInViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         loadingIndicator.hidden = true
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -42,9 +44,14 @@ class SignInViewController: UIViewController {
     
     @IBAction func didPressSignInButton(sender: AnyObject) {
         println("hey")
-        loadingIndicator.hidden = false
-        loadingIndicator.startAnimating()
-        delay(2, { () -> () in
+        var loadingView = UIAlertView(title: "Signing in...", message: nil, delegate: nil, cancelButtonTitle: nil)
+        loadingView.show()
+        
+        let delay = 2.0 * Double(NSEC_PER_SEC)
+        var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        dispatch_after(time, dispatch_get_main_queue(), {
+            loadingView.dismissWithClickedButtonIndex(-1, animated: true)
+            
             if (self.emailTextField.text == "e" && self.passwordTextField.text == "pw") {
                 println("madeit")
                 self.performSegueWithIdentifier("loginSegue", sender: self)
@@ -52,13 +59,18 @@ class SignInViewController: UIViewController {
                 var alertView = UIAlertView(title: "Oops", message: "email/password is incorrect", delegate: nil, cancelButtonTitle: "OK")
                 alertView.show()
             }
-            self.loadingIndicator.stopAnimating()
-            self.loadingIndicator.hidden = true
         })
-        
+    }
+    
+    @IBAction func didEndEditing(sender: AnyObject) {
+        println("editing finished!")
     }
     
     
+//    func textFieldShouldReturn(emailTextField: UITextField!) -> Bool {
+//        self.view.endEditing(true);
+//        return false;
+//    }
     
     func keyboardWillShow(notification: NSNotification!) {
         var userInfo = notification.userInfo!
@@ -101,14 +113,7 @@ class SignInViewController: UIViewController {
             // If you need it, you can use the kbSize property above to get the keyboard width and height.
             }, completion: nil)
     }
-    /*
-    // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
+    
     
 }
