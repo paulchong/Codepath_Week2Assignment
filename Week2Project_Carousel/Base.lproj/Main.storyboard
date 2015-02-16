@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="360" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" id="lM1-er-xHM">
+                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro" id="lM1-er-xHM">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="1136"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     </imageView>
@@ -156,18 +156,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="dfn-au-4gf">
-                                <rect key="frame" x="277" y="35" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="YpM-cx-gWm"/>
                     <connections>
                         <outlet property="emailTextField" destination="cKr-2v-tez" id="XvN-R7-RRd"/>
+                        <outlet property="fullView" destination="WWL-ub-BQr" id="WGD-bk-dT3"/>
                         <outlet property="inputContainers" destination="HG6-QS-h2O" id="NCb-Mh-JGZ"/>
-                        <outlet property="loadingIndicator" destination="dfn-au-4gf" id="FX5-vW-gvR"/>
                         <outlet property="loginContainer" destination="68Q-ry-1tG" id="6MN-j2-ZxB"/>
                         <outlet property="loginTextImage" destination="noi-dg-ba7" id="Thl-69-fcu"/>
                         <outlet property="passwordTextField" destination="3U9-IC-rdY" id="MFa-Ya-LXs"/>

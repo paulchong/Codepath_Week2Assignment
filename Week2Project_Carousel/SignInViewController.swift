@@ -1,15 +1,9 @@
 
-//
-//  SignInViewController.swift
-//  Week2Project_Carousel
-//
-//  Created by Paul Chong on 2/11/15.
-//  Copyright (c) 2015 Codepath. All rights reserved.
-//
-
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
+    
+    @IBOutlet var fullView: UIView!
     
     @IBOutlet weak var emailTextField: UITextField!
     
@@ -20,9 +14,6 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var inputContainers: UIView!
     
     @IBOutlet weak var loginTextImage: UIImageView!
-
-    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
-    
     
     
     override func viewDidLoad() {
@@ -31,16 +22,30 @@ class SignInViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
-        loadingIndicator.hidden = true
+        // dismisses keyboard upon tapping on fullView
+        var tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
+        fullView.addGestureRecognizer(tap)
         
+        // dismisses keyboard upon clicking return
+        self.emailTextField.delegate = self;
+        self.passwordTextField.delegate = self;
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // dismisses keyboard upon tapping on fullView
+    func DismissKeyboard(){
+        fullView.endEditing(true)
     }
     
+    // dismisses keyboard upon clicking return
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        self.view.endEditing(true);
+        return false;
+    }
+    
+    @IBAction func didEndEditing(sender: AnyObject) {
+    }
+
     
     @IBAction func didPressSignInButton(sender: AnyObject) {
         println("hey")
@@ -52,7 +57,7 @@ class SignInViewController: UIViewController {
         dispatch_after(time, dispatch_get_main_queue(), {
             loadingView.dismissWithClickedButtonIndex(-1, animated: true)
             
-            if (self.emailTextField.text == "e" && self.passwordTextField.text == "pw") {
+            if (self.emailTextField.text == "email" && self.passwordTextField.text == "password") {
                 println("madeit")
                 self.performSegueWithIdentifier("loginSegue", sender: self)
             } else {
@@ -61,16 +66,6 @@ class SignInViewController: UIViewController {
             }
         })
     }
-    
-    @IBAction func didEndEditing(sender: AnyObject) {
-        println("editing finished!")
-    }
-    
-    
-//    func textFieldShouldReturn(emailTextField: UITextField!) -> Bool {
-//        self.view.endEditing(true);
-//        return false;
-//    }
     
     func keyboardWillShow(notification: NSNotification!) {
         var userInfo = notification.userInfo!
@@ -114,6 +109,10 @@ class SignInViewController: UIViewController {
             }, completion: nil)
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
     
 }
